@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <title>Star Rating</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --poping-family: "Poppins", sans-serif;
+        --roboto-family: "Roboto", sans-serif;
+        --yellow: #ffa502;
+        --black: #080808;
+        --white: #fff;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        font-size: 1.6rem;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to right, #ff7e5f, #feb47b);
+      }
+
+      .star-card {
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+        font-family: var(--poping-family);
+        text-transform: uppercase;
+        background-color: var(--white);
+      }
+
+      .star-card h3 {
+        color: #dadada;
+        font-size: 2.2rem;
+      }
+
+      .star-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      .star-section i {
+        color: #e6e6e6;
+        font-size: 2.5rem;
+        cursor: pointer;
+      }
+
+      i.active {
+        color: #ffa502;
+      }
+
+      .result {
+        text-align: center;
+        color: rgba(0, 0, 0, 0.8);
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mx-auto">
+          <div class="star-card">
+            <h3 class="text-center mb-3 fw-bold">How was your experience?</h3>
+            <div class="star-section">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+            <p class="result"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const star = document.querySelectorAll("i");
+      const result = document.querySelector(".resul t");
+
+      star.forEach((element, index) => {
+        element.addEventListener("click", () => {
+          star.forEach((newElement, indexTwo) => {
+            console.log(index, indexTwo);
+            if (index >= indexTwo) {
+              newElement.classList.add("active");
+            } else {
+              newElement.classList.remove("active");
+            }
+
+            const rating = index + 1;
+            result.textContent = `Your rating: ${rating} / 5`
+          });
+        });
+      });
+    </script>
+    <script
+      src="https://kit.fontawesome.com/9abcaa1c43.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
